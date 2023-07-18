@@ -3,6 +3,8 @@ name: Android CI
 # 触发器
 on:
   push:
+    branches:
+      - master
     tags:
       - '*'
 
