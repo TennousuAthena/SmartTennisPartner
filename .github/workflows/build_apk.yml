@@ -3,10 +3,11 @@ name: Android CI
 # 触发器
 on:
   push:
-    branches:
-      - master
     tags:
       - '*'
+    branches:
+      - master
+
 
 jobs:
   build:
@@ -45,8 +46,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: AutoBuild
-          release_name: Auto Build Release ${{ github.ref }}
+          tag_name: build.${{ github.run_id }}
+          release_name: Auto Build Release ${{ github.run_id }}
           draft: false
           prerelease: true
       # 上传apk到release
