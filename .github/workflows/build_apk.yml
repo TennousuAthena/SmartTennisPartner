@@ -45,7 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: build.${{ github.ref }}
+          tag_name: AutoBuild
           release_name: Auto Build Release ${{ github.ref }}
           draft: false
           prerelease: true
