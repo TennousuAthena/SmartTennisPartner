@@ -10,6 +10,7 @@
 
 
     <string name="menu_home">Home</string>
+    <string name="menu_charts">Charts</string>
     <string name="menu_terminal">Terminal</string>
     <string name="menu_about">About</string>
 </resources>

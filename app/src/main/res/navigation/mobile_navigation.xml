@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_charts"
+        android:name="cn.lemoe.btconn.ui.charts.ChartsFragment"
+        android:label="@string/menu_charts"
+        tools:layout="@layout/fragment_charts" />
+
+    <fragment
         android:id="@+id/nav_terminal"
-        android:name="cn.lemoe.btconn.ui.gallery.GalleryFragment"
+        android:name="cn.lemoe.btconn.ui.terminal.TerminalFragment"
         android:label="@string/menu_terminal"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_terminal" />
 
     <fragment
         android:id="@+id/nav_about"
