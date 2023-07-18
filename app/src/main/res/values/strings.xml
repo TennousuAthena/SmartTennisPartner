@@ -8,6 +8,9 @@
     <string name="action_settings">Settings</string>
     <string name="action_connection">Connection</string>
 
+    <string name="fab_connect">Connect</string>
+
+    <string name="terminal_hint">Input the data here</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_charts">Charts</string>

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class TerminalViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Terminal Fragment"
+        value = "Waiting for dataflow...⤵\n"
     }
     val text: LiveData<String> = _text
 }

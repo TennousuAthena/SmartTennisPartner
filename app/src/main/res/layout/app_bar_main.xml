@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,12 +24,14 @@
     <include layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/fab_connect"
+        android:visibility="visible"
         app:srcCompat="@drawable/plus" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

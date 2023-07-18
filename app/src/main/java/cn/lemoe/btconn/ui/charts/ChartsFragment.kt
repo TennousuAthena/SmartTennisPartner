@@ -35,7 +35,7 @@ class ChartsFragment : Fragment() {
         webView.webChromeClient = WebChromeClient()
 
         // 加载Echarts图表页面
-        webView.loadUrl("file:///android_asset/chart.html")
+        webView.loadUrl("file:///android_asset/html/chart.html")
 
 
         return root
