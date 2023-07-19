@@ -8,12 +8,8 @@ import world.shanya.serialport.SerialPort
 import world.shanya.serialport.SerialPortBuilder
 
 
-class BTOperate (private val context: Context) : BroadcastReceiver() {
-
-    constructor() : this(context = applicationContext) // 调用主构造函数
-
-
-    private val TAG = "BTActivity"
+public class BTOperate (private val context: Context) : BroadcastReceiver() {
+    private val logTag = "BTActivity"
 
     private val serialPort: SerialPort = SerialPortBuilder
         .isDebug(true)
@@ -21,7 +17,7 @@ class BTOperate (private val context: Context) : BroadcastReceiver() {
         .isIgnoreNoNameDevice(true)
         .setAutoReconnectAtIntervals(true, 10000)
         .setReceivedDataCallback { data ->
-            Log.d(TAG, data)
+            Log.d(logTag, data)
             // 广播消息给所有界面
             val broadcastIntent = Intent("cn.lemoe.btconn.bluetooth.MESSAGE_RECEIVED")
             broadcastIntent.putExtra("message", data)
