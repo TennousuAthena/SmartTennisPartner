@@ -33,7 +33,14 @@
   </table>
 
   <script>
+    
+    // 初始化Echarts图表
+    var chart = echarts.init(document.getElementById('chart'));
+    chart.showLoading({
+      text: 'Waiting for dataflow...'
+    });
     function appHandler(newData){
+      chart.hideLoading();
       const json_area = document.querySelector("#json_area")
       json_area.innerHTML += newData
       data = parseMultipleJSON(json_area.innerHTML)
@@ -71,8 +78,6 @@
 // 89,"GyroZ":0.894}`;
 
 
-    // 初始化Echarts图表
-    var chart = echarts.init(document.getElementById('chart'));
 
     // 绘制图表
     function drawChart() {
