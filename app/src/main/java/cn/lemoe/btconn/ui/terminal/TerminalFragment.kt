@@ -113,6 +113,8 @@ class TerminalFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        // 注銷廣播接收器
+        context?.unregisterReceiver(messageReceiver)
     }
 
     fun formatTimeToMilliseconds(time: Long): String {
