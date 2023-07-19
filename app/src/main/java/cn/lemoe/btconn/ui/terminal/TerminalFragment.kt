@@ -74,11 +74,18 @@ class TerminalFragment : Fragment() {
             textView.text = it
         }
 
-        val testButton = binding.buttonSend
-        testButton.setOnClickListener {
+        val sendButton = binding.buttonSend
+        sendButton.setOnClickListener {
             val terminalInputBinding = binding.TerminalInput
             val terminalText = terminalInputBinding.text.toString()
             terminalAppend(terminalText)
+        }
+
+        val testButton = binding.buttonTest
+        testButton.setOnClickListener {
+            val broadcastIntent = Intent("cn.lemoe.btconn.bluetooth.MESSAGE_RECEIVED")
+            broadcastIntent.putExtra("message", "test message")
+            context?.sendBroadcast(broadcastIntent)
         }
 
         return root

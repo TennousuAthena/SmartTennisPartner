@@ -32,7 +32,7 @@ class BTOperate (private val context: Context) : BroadcastReceiver() {
 
         // 广播消息给所有界面
         val broadcastIntent = Intent("cn.lemoe.btconn.bluetooth.MESSAGE_RECEIVED")
-        broadcastIntent.putExtra("message", message)
+        broadcastIntent.putExtra("serialMessage", message)
         context.sendBroadcast(broadcastIntent)
     }
 
