@@ -3,7 +3,6 @@ package cn.lemoe.btconn
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.View
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,13 +11,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import cn.lemoe.btconn.databinding.ActivityMainBinding
+import cn.lemoe.btconn.ui.terminal.TerminalFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TerminalFragment.OnHeadlineSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var btConn: BTConn
+    private lateinit var btOperate: BTOperate
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
 //                view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
-            btConn = BTConn(this)
-            btConn.openDiscoveryActivity()
+            btOperate = BTOperate(this)
+            btOperate.openDiscoveryActivity()
         }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -64,4 +65,17 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onAttachFragment(fragment: Fragment) {
+        Log.d("MainActivity", "onAttachFragment")
+        if (fragment is TerminalFragment) {
+            fragment.setOnHeadlineSelectedListener(this)
+        }
+    }
+
+    override fun onSerialMsgReceived(content: String) {
+        Log.d("MainActivity", "onSerialMsgReceived $content")
+
+    }
+
 }
