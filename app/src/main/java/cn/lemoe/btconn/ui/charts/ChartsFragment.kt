@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
@@ -30,7 +31,7 @@ class ChartsFragment : Fragment() {
     private lateinit var webView: WebView
     private var isWebViewAvailable:Boolean = false
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +63,17 @@ class ChartsFragment : Fragment() {
                 webView.evaluateJavascript("document.querySelector(\"#json_area\").innerText = '$stringVal'", null)
             }
         }
+        webView.setOnTouchListener { _, event ->
+            // 禁止左右滑动
+            if (event.pointerCount == 1) {
+                when (event.action) {
+                    MotionEvent.ACTION_MOVE -> true
+                    else -> false
+                }
+            } else {
+                false
+            }
+        }
 
 
         return root
@@ -80,7 +92,6 @@ class ChartsFragment : Fragment() {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
     }
 
