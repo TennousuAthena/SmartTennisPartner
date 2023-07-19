@@ -8,7 +8,12 @@ import world.shanya.serialport.SerialPort
 import world.shanya.serialport.SerialPortBuilder
 
 
-public class BTOperate (private val context: Context) : BroadcastReceiver() {
+class BTOperate (private val context: Context) : BroadcastReceiver() {
+    //Default constructor
+    public constructor() : this(context = null!!) {
+        //Do nothing
+    }
+
     private val logTag = "BTActivity"
 
     private val serialPort: SerialPort = SerialPortBuilder
