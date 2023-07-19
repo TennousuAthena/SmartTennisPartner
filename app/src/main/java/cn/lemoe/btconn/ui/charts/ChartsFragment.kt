@@ -59,21 +59,21 @@ class ChartsFragment : Fragment() {
                 binding.progressWebView.visibility = View.GONE
                 isWebViewAvailable = true
 
-                val stringVal = getString(R.string.webview_waiting_for_connection)
-                webView.evaluateJavascript("document.querySelector(\"#json_area\").innerText = '$stringVal'", null)
+//                val stringVal = getString(R.string.webview_waiting_for_connection)
+                webView.evaluateJavascript("document.querySelector(\"#json_area\").innerText += ''", null)
             }
         }
-        webView.setOnTouchListener { _, event ->
-            // 禁止左右滑动
-            if (event.pointerCount == 1) {
-                when (event.action) {
-                    MotionEvent.ACTION_MOVE -> true
-                    else -> false
-                }
-            } else {
-                false
-            }
-        }
+//        webView.setOnTouchListener { _, event ->
+//            // 禁止左右滑动
+//            if (event.pointerCount == 1) {
+//                when (event.action) {
+//                    MotionEvent.ACTION_MOVE -> true
+//                    else -> false
+//                }
+//            } else {
+//                false
+//            }
+//        }
 
 
         return root
@@ -85,7 +85,7 @@ class ChartsFragment : Fragment() {
                 // 处理接收到的蓝牙消息
                 val message = intent.getStringExtra("message")
                 if (message != null) {
-                    val jsCode = "document.querySelector(\"#json_area\").innerText = '$message'"
+                    val jsCode = "appHandler(`$message`)"
                     val newWebView : WebView = binding.webviewCharts
                     newWebView.evaluateJavascript(jsCode, null)
                 }
